@@ -1,23 +1,37 @@
-# Install deev tools
+#!/bin/bash
+
+echo "Install dev tools"
 
 xcode-select --install
 
-# Install brew
+echo "Install Homebrew"
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+brew upgrade
+brew doctor
 
-# Install fzf
+echo "Install text formulae : terminal utils"
+brew install coreutils zsh emacs fzf tmux starship tree bat tig
 
-# Install zsh
+echo "Install text formulae : web-dev"
+brew install node yarn redis wget
 
-# Install fast-highlight in .zsh/fast-syntax-highlighting/
+echo "Install ng with npm"
+npm install -g @angular/cli
 
+echo "Install cask formulae"
+brew cask install alacritty visual-studio-code docker insomnia julia
+
+echo "Install fast-highlight in ~/.zsh/fast-syntax-highlighting/
 git clone https://github.com/zdharma/fast-syntax-highlighting ~/.zsh/fast-syntax-highlighting/
 
+echo "Install Fira fonts"
+brew install svn
+brew tap homebrew/cask-fonts
+brew cask install font-fira-code font-fira-mono font-fira-mono-for-powerline font-fira-sans
 
-# Install tmux
+echo "Copy dotfiles"
+sudo cp -r .emacs.d .alacritty.yml .config .gitconfig .tmux.conf .tmux.conf.local .zshrc ~/
 
-# Install alacrity
-
-# Install starship
-
-# Install Julia
+echo "Source files"
+source ~/.zshrc
 
