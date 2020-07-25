@@ -1,0 +1,15 @@
+# This is Git's per-user configuration file.
+[user]
+# Please adapt and uncomment the following lines:
+	name = Vitor Nesello
+	email = vitornesello@gmail.com
+
+[alias]
+	vommit = !sh -c \"cat ~/.gitvommit\"
+[core]
+	editor = emacs
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
