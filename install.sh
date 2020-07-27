@@ -10,10 +10,10 @@ brew upgrade
 brew doctor
 
 echo "Install text formulae : terminal utils"
-brew install coreutils zsh emacs fzf tmux starship tree bat tig
+brew install coreutils zsh emacs fzf tmux starship tree bat tig htop
 
 echo "Install text formulae : web-dev"
-brew install node yarn redis wget
+brew install npm yarn redis wget
 
 echo "Install ng with npm"
 npm install -g @angular/cli
