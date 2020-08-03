@@ -19,7 +19,7 @@ echo "Install ng with npm"
 npm install -g @angular/cli
 
 echo "Install cask formulae"
-brew cask install alacritty visual-studio-code docker insomnia julia
+brew cask install alacritty visual-studio-code docker insomnia julia typora
 
 echo "Install fast-highlight in ~/.zsh/fast-syntax-highlighting/
 git clone https://github.com/zdharma/fast-syntax-highlighting ~/.zsh/fast-syntax-highlighting/
