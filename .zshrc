@@ -229,3 +229,6 @@ alias cputemp='sudo powermetrics|grep -i "CPU die temperature"'
 alias gputemp='sudo powermetrics|grep -i "GPU die temperature"'
 export HISTTIMEFORMAT="%d/%m/%y %T "
 alias fzfp="fzf --preview 'bat --style=numbers --color=always --line-range :500 {}'"
+
+alias mypip="dig +short myip.opendns.com @resolver1.opendns.com"
+
