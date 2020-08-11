@@ -232,3 +232,6 @@ alias fzfp="fzf --preview 'bat --style=numbers --color=always --line-range :500 
 
 alias mypip="dig +short myip.opendns.com @resolver1.opendns.com"
 
+function todos() {
+	tmux split-window -h -p 40 "cd ~/Desktop && emacs todos.md"
+}
