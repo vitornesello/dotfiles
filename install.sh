@@ -10,7 +10,7 @@ brew upgrade
 brew doctor
 
 echo "Install text formulae : terminal utils"
-brew install coreutils zsh emacs fzf tmux starship tree bat tig htop rsync postgresql
+brew install coreutils zsh emacs fzf tmux starship tree bat tig htop rsync postgresql antigen
 
 echo "Install text formulae : web-dev"
 brew install npm yarn redis wget
@@ -35,3 +35,4 @@ sudo cp -r .emacs.d .alacritty.yml .config .gitconfig .tmux.conf .tmux.conf.loca
 echo "Source files"
 source ~/.zshrc
 
+antigen bundle paulirish/git-open
