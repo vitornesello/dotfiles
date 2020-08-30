@@ -13,7 +13,7 @@ echo "Install text formulae : terminal utils"
 brew install coreutils zsh emacs fzf tmux starship tree bat tig htop rsync postgresql antigen
 
 echo "Install text formulae : web-dev"
-brew install npm yarn redis wget
+brew install npm yarn redis wget docker
 
 echo "Install ng with npm"
 npm install -g @angular/cli
@@ -21,7 +21,7 @@ npm install -g @angular/cli
 echo "Install cask formulae"
 brew cask install alacritty visual-studio-code docker insomnia julia typora dbeaver-community
 
-echo "Install fast-highlight in ~/.zsh/fast-syntax-highlighting/
+echo "Install fast-highlight in ~/.zsh/fast-syntax-highlighting/"
 git clone https://github.com/zdharma/fast-syntax-highlighting ~/.zsh/fast-syntax-highlighting/
 
 echo "Install Fira fonts"
