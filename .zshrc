@@ -193,3 +193,11 @@ export PATH="/usr/local/opt/node@12/bin:$PATH"
 
 source /usr/local/share/antigen/antigen.zsh
 
+antigen bundle paulirish/git-open
+
+# alias eur-to-brl="curl -s https://www.ecb.europa.eu/stats/eurofxref/eurofxref-daily.xml | grep BRL | tr -dc '.0-9\n'"
+function eur2brl() {
+    curl -s http://data.fixer.io/api/latest\?access_key\=97e1833fadb1c651d6d468b2e2d7ba91\&format\=1\&base\=EUR | grep BRL | tr -dc '.0-9\n'
+}
+
+
