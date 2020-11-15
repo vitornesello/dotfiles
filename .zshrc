@@ -27,9 +27,9 @@ source $ZSH/oh-my-zsh.sh
 
 # Preferred editor for local and remote sessions
 if [[ -n $SSH_CONNECTION ]]; then
-  export EDITOR='emacs-26.3'
+  export EDITOR='emacs'
 else
-  export EDITOR='emacs-26.3'
+  export EDITOR='emacs'
 fi
 
 # Compilation flags
@@ -70,51 +70,11 @@ export LD_LIBRARY_PATH="/Users/vitornesello/Applications/ILOG/CPLEX_Studio128/cp
 # export DYLD_LIBRARY_PATH="/Users/vitornesello/Applications/gitCode/vroom/":$DYLD_LIBRARY_PATH:$PATH
 # export PATH="$PATH:/Users/vitornesello/Applications/gitCode/vroom/bin/"
 
-alias emacs='/usr/local/Cellar/emacs/26.3/bin/emacs-26.3 -nw'
-
-
-# export PATH="$PATH:/Library/TeX/Root/bin/x86_64-darwin/pdflatex":$PATH
-# alias pdflatex='/Library/TeX/Root/bin/x86_64-darwin/pdflatex'
-
-
-# # BaPCod paths
-# export BAPCOD_ROOT=/Users/vitornesello/Applications/BaPCod/BaPCodFramework/2.0.0/BaPCod
-# export BAPCOD_PATH=$BAPCOD_ROOT:$BAPCOD_ROOT/include:$BAPCOD_ROOT/include_solvers:$BAPCOD_ROOT/lib:$BAPCOD_ROOT/tools/backtrace:$BAPCOD_ROOT/tools/MathProgSolverBuilder/include:$BAPCOD_ROOT/tools/MathProgSolverBuilder/src:$BAPCOD_ROOT/include_solverInterfaces
-# export PATH=$BAPCOD_PATH:$PATH
-# # cplex paths used by bapcod
-# export CPLEX_INCLUDE_DIR=/Users/vitornesello/Applications/ILOG/CPLEX_Studio1271/cplex/include/ilcplex
-# export PATH=$CPLEX_INCLUDE_DIR:$PATH
-# export CPLEX_LIBRARY=/Users/vitornesello/Applications/ILOG/CPLEX_Studio1271/cplex/lib/x86-64_osx/static_pic
-# export PATH=$CPLEX_LIBRARY:$PATH
-# # lemon paths used by bapcod
-# export LEMON_INCLUDE_DIR=$BAPCOD_ROOT/tools/lemon-1.3.1/build/include
-# export PATH=$LEMON_INCLUDE_DIR:$PATH
-# export LEMON_LIBRARY=$BAPCOD_ROOT/tools/lemon-1.3.1/build/lib
-# export PATH=$LEMON_LIBRARY:$PATH
-# # path to good version of boost
-# export Boost_INCLUDE_DIR=$BAPCOD_ROOT/tools/boost_1_56_0/build/include
-# export PATH=$Boost_INCLUDE_DIR:$PATH
-
-# # I commented this to see if something breaks...
-# # export CPLUS_INCLUDE_PATH=/usr/local/include/
-
+alias emacs='/usr/local/Cellar/emacs/27.1/bin/emacs-27.1 -nw'
 
 # # MacPorts Installer addition on 2017-06-26_at_19:35:01: adding an appropriate PATH variable for use with MacPorts.
 # export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
 # # Finished adapting your PATH environment variable for use with MacPorts.
-
-
-# #Julia
-alias julia06='/Applications/Julia-0.6.app/Contents/Resources/julia/bin/julia'
-#alias julia07='/Applications/Julia-0.7.app/Contents/Resources/julia/bin/julia'
-alias julia10='/Applications/Julia-1.0.5.app/Contents/Resources/julia/bin/julia'
-alias julia11='/Applications/Julia-1.1.app/Contents/Resources/julia/bin/julia'
-alias julia12='/Applications/Julia-1.2.app/Contents/Resources/julia/bin/julia'
-alias julia13='/Applications/Julia-1.3.app/Contents/Resources/julia/bin/julia'
-alias julia14='/Applications/Julia-1.4.app/Contents/Resources/julia/bin/julia'
-# When developing Coluna:
-# export JULIA_LOAD_PATH=/Users/vitornesello/.julia/dev/GSolver/
-# export JULIA_LOAD_PATH=/Users/vitornesello/.julia/dev/EnergisaPrizeCollecting/
 
 alias editsource='emacs ~/.zshrc'
 alias updatesource='source ~/.zshrc'
@@ -150,7 +110,6 @@ export GUROBI_HOME="/Library/gurobi902/mac64/"
 export PATH="${PATH}:${GUROBI_HOME}/bin"
 export LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:${GUROBI_HOME}/lib"
 
-
 # # RUBY GEM CONFIG
 # export GEM_HOME=~/.gem/ruby/2.3
 # export PATH=$PATH:~/.gem/ruby/2.3/bin
@@ -174,7 +133,7 @@ export LC_ALL=en_US.UTF-8
 eval "$(starship init zsh)"
 source /Users/vitornesello/.zsh/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
 
-
+# Shortcuts to get information about the system
 alias cputemp='sudo powermetrics|grep -i "CPU die temperature"'
 alias gputemp='sudo powermetrics|grep -i "GPU die temperature"'
 alias fanspeed='sudo powermetrics|grep -i "Fan"'
@@ -191,9 +150,11 @@ export PATH="/usr/local/opt/node@12/bin:$PATH"
 
 . /usr/local/opt/asdf/asdf.sh
 
+# Antigen
 source /usr/local/share/antigen/antigen.zsh
 
-antigen bundle paulirish/git-open
+# Load Antigen configurations
+antigen init ~/.antigenrc
 
 # alias eur-to-brl="curl -s https://www.ecb.europa.eu/stats/eurofxref/eurofxref-daily.xml | grep BRL | tr -dc '.0-9\n'"
 function eur2brl() {
@@ -201,3 +162,4 @@ function eur2brl() {
 }
 
 
+export PATH="/usr/local/sbin:$PATH"
