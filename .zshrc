@@ -106,7 +106,7 @@ export ORTOOLS_PATH='/Users/vitornesello/Applications/or-tools/'
 # [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 
 # Gurobi
-export GUROBI_HOME="/Library/gurobi902/mac64/"
+export GUROBI_HOME="/Library/gurobi910/mac64/"
 export PATH="${PATH}:${GUROBI_HOME}/bin"
 export LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:${GUROBI_HOME}/lib"
 
