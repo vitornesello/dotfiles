@@ -35,4 +35,3 @@ sudo cp -r .emacs.d .alacritty.yml .config .gitconfig .tmux.conf .tmux.conf.loca
 echo "Source files"
 source ~/.zshrc
 
-antigen bundle paulirish/git-open
