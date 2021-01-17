@@ -165,3 +165,5 @@ function eur2brl() {
 
 
 export PATH="/usr/local/sbin:$PATH"
+
+alias call_oracle='julia ~/.julia/dev/CardsOracle/scripts/call_oracle.jl'
