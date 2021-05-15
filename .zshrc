@@ -1,6 +1,7 @@
 HISTSIZE=10000
 SAVEHIST=10000
 HISTFILE=~/.zsh_history
+ZSH_THEME="sonicradish"
 
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
@@ -70,7 +71,7 @@ export LD_LIBRARY_PATH="/Users/vitornesello/Applications/ILOG/CPLEX_Studio128/cp
 # export DYLD_LIBRARY_PATH="/Users/vitornesello/Applications/gitCode/vroom/":$DYLD_LIBRARY_PATH:$PATH
 # export PATH="$PATH:/Users/vitornesello/Applications/gitCode/vroom/bin/"
 
-alias emacs='/usr/local/Cellar/emacs/27.1/bin/emacs-27.1 -nw'
+alias emacs='/usr/local/Cellar/emacs/27.2/bin/emacs-27.2 -nw'
 
 # # MacPorts Installer addition on 2017-06-26_at_19:35:01: adding an appropriate PATH variable for use with MacPorts.
 # export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
@@ -163,7 +164,19 @@ function eur2brl() {
     curl -s http://data.fixer.io/api/latest\?access_key\=97e1833fadb1c651d6d468b2e2d7ba91\&format\=1\&base\=EUR | grep BRL | tr -dc '.0-9\n'
 }
 
+function wait_and_pull_master() {
+	git checkout master
+	julia -e 'sleep(240)'
+	git pull
+}
 
 export PATH="/usr/local/sbin:$PATH"
 
 alias call_oracle='julia ~/.julia/dev/CardsOracle/scripts/call_oracle.jl'
+alias print_champs='julia ~/.julia/dev/CardsOracle/scripts/print_championship.jl'
+
+function formatpkg() {
+	julia  -e 'using JuliaFormatter; format(".", verbose=true)'
+}
+
+alias start_minecraft="java -jar server.jar nogui"
