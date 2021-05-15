@@ -1,0 +1,49 @@
+{
+    "workbench.iconTheme": "material-icon-theme",
+    "workbench.editor.enablePreview": false,
+    "editor.fontFamily": "fira code",
+    "editor.fontSize": 14,
+    "editor.cursorStyle": "block",
+    "julia.enableTelemetry": true,
+    "editor.renderWhitespace": "all",
+    "editor.fontWeight": "500",
+    "terminal.integrated.macOptionIsMeta": true,
+    "workbench.startupEditor": "newUntitledFile",
+    "markdown-preview-enhanced.liveUpdate": true,
+    "editor.wordSeparators": "`~!@#$%^&*()-=+[{]}\\|;:'\",.<>/?_",
+    "cSpell.userWords": [
+        "disaggregate"
+    ],
+    "C_Cpp.updateChannel": "Insiders",
+    "cSpell.enabled": true,
+    "terminal.integrated.commandsToSkipShell": [
+        "language-julia.interrupt"
+    ],
+    "typescript.preferences.importModuleSpecifier": "relative",
+    "javascript.preferences.importModuleSpecifier": "relative",
+    "mssql.connections": [
+        {
+            "server": "{{put-server-name-here}}",
+            "database": "{{put-database-name-here}}",
+            "user": "{{put-username-here}}",
+            "password": "{{put-password-here}}"
+        }
+    ],
+    "zenMode.hideStatusBar": false,
+    "workbench.colorTheme": "Monokai Pro (Filter Ristretto)",
+    "[julia]": {
+        "editor.quickSuggestions": true,
+    },
+    "editor.rulers": [80, 100],
+    "editor.glyphMargin": false,
+    "editor.folding": true,
+    "workbench.activityBar.visible": true,
+    "zenMode.fullScreen": false,
+    "zenMode.restore": true,
+    "zenMode.centerLayout": false,
+    "editor.lineDecorationsWidth": 0,
+    "zenMode.hideLineNumbers": false,
+    "editor.minimap.enabled": false,
+    "oneDarkPro.vivid": true,
+    "window.zoomLevel": 1,
+}
