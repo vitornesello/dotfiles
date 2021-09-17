@@ -10,7 +10,7 @@ brew upgrade
 brew doctor
 
 echo "Install text formulae : terminal utils"
-brew install coreutils zsh emacs fzf tmux starship tree bat tig htop rsync postgresql antigen thefuck
+brew install coreutils zsh emacs fzf tmux starship tree bat tig htop rsync postgresql antigen thefuck watch
 
 echo "Install text formulae : web-dev"
 brew install npm yarn redis wget docker

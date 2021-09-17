@@ -142,7 +142,8 @@ alias fanspeed='sudo powermetrics|grep -i "Fan"'
 export HISTTIMEFORMAT="%d/%m/%y %T "
 alias fzfp="fzf --preview 'bat --style=numbers --color=always --line-range :500 {}'"
 
-alias mypip="dig +short myip.opendns.com @resolver1.opendns.com"
+# alias mypip="dig +short myip.opendns.com @resolver1.opendns.com"
+alias mypip="wget -qO- http://ipecho.net/plain | xargs echo"
 
 # function todos() {
 # 	tmux split-window -h -p 50 "cd ~/Desktop && emacs todos.md"
@@ -180,3 +181,6 @@ function formatpkg() {
 }
 
 alias start_minecraft="java -jar server.jar nogui"
+
+alias worked="date \"+%Y-%m-%d\" >> /Users/vitornesello/Atoptima\ Dropbox/5.HumanResources/Founders-Partners-Associates/VN/worked-days/worked-days.txt"
+alias openworked="open /Users/vitornesello/Atoptima\ Dropbox/5.HumanResources/Founders-Partners-Associates/VN/worked-days/worked-days.txt"

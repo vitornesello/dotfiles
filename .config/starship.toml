@@ -1,14 +1,29 @@
-[[battery.display]]  # "bold red" style when capacity is between 0% and 10%
-threshold = 10
-style = "bold red"
+add_newline = false
 
-[[battery.display]]  # "bold yellow" style when capacity is between 10% and 30%
-threshold = 30
-style = "bold yellow"
+[git_metrics]
+disabled = false
+added_style = "bold green"
+deleted_style = "bold red"
+format = '[+$added]($added_style)/[-$deleted]($deleted_style) '
 
-[[battery.display]]  # "bold yellow" style when capacity is between 10% and 30%
-threshold = 100
-style = "bold green"
+# [battery]
+# full_symbol = "- "
+# charging_symbol = "+ "
+# discharging_symbol = "* "
+
+# [[battery.display]]  # "bold red" style when capacity is between 0% and 10%
+# threshold = 10
+# style = "bold red"
+
+# [[battery.display]]  # "bold yellow" style when capacity is between 10% and 30%
+# threshold = 30
+# style = "bold yellow"
+
+# [[battery.display]]  # "bold yellow" style when capacity is between 10% and 30%
+# threshold = 100
+# style = "bold green"
+# discharging_symbol = "-"
+# charging_symbol = "-"
 
 [memory_usage]
 disabled = true
