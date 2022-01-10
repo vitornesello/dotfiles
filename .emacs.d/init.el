@@ -9,7 +9,6 @@
   (when (< emacs-major-version 24)
     ;; For important compatibility libraries like cl-lib
     (add-to-list 'package-archives (cons "gnu" (concat proto "://elpa.gnu.org/packages/")))))
-(package-initialize)
 
 ;;tab
 ;;(setq c-default-style "k&r"
@@ -56,10 +55,9 @@
   (hi-lock-mode 1)
   (auto-complete-mode 1))
 
-(setq-default c-basic-offset 4
-	      tab-width 4
-             indent-tabs-mode t)
-
+(setq-default indent-tabs-mode nil)
+(setq-default tab-width 4)
+(setq indent-line-function 'insert-tab)
 
 ;; For Helm
 (helm-mode 1)
@@ -87,15 +85,14 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(ac-trigger-commands (quote (self-insert-command)))
+ '(ac-trigger-commands '(self-insert-command))
  '(ac-trigger-key nil)
  '(ansi-color-faces-vector
    [default default default italic underline success warning error])
  '(auto-insert-mode t)
- '(custom-enabled-themes (quote (wombat)))
+ '(custom-enabled-themes '(wombat))
  '(package-selected-packages
-   (quote
-	(markdown-mode flycheck-julia julia-mode monokai-alt-theme ess sr-speedbar helm-ag geben-helm-projectile ## helm highlight-symbol auto-highlight-symbol auto-complete yaml-mode multiple-cursors projectile)))
+   '(terraform-mode markdown-mode flycheck-julia julia-mode monokai-alt-theme ess sr-speedbar helm-ag geben-helm-projectile ## helm highlight-symbol auto-highlight-symbol auto-complete yaml-mode multiple-cursors projectile))
  '(speedbar-fetch-etags-command "ctagsforjulia"))
 
 (load-theme 'monokai-alt t)
@@ -139,12 +136,12 @@
 ;;         ))
 ;; (setq tags-case-fold-search nil) ; case sensitive search
 
-(defun create-tags (dir-name)
-  "Create tags file."
-  (interactive "DDirectory: ")
-  (shell-command
-   (format "/usr/local/Cellar/universal-ctags/HEAD-a20bb99/bin/ctags -R -e --options=/Users/vitornesello/ctags_folder/ctags --totals=yes --languages=julia %s" (directory-file-name dir-name)))
-  )
+;; (defun create-tags (dir-name)
+;;   "Create tags file."
+;;   (interactive "DDirectory: ")
+;;   (shell-command
+;;    (format "/usr/local/Cellar/universal-ctags/HEAD-a20bb99/bin/ctags -R -e --options=/Users/vitornesello/ctags_folder/ctags --totals=yes --languages=julia %s" (directory-file-name dir-name)))
+;;   )
 
 
 
@@ -154,44 +151,6 @@
 (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
 
 
-(eval-after-load 'autoinsert
-  '(define-auto-insert '("\\.cpp\\'" . "Cpp skeleton")
-	 '(
-	   \n "#include <stdio.h>" \n
-	   "#include \""
-	   (file-name-sans-extension
-		(file-name-nondirectory (buffer-file-name)))
-	   ".h\"" \n \n
-        )))
-
-
-;; autoinsert C/C++ header
-(define-auto-insert
-  (cons "\\.\\([Hh]\\|hh\\|hpp\\)\\'" " .h header")
-  '(nil
-	"// " (file-name-nondirectory buffer-file-name) "\n"
-	"//\n"
-	"// Description:\n"
-	"//\n"
-	(make-string 70 ?/) "\n\n"
-	(let* ((noext (substring buffer-file-name 0 (match-beginning 0)))
-		   (nopath (file-name-nondirectory noext))
-		   (ident (concat (upcase nopath) "_H")))
-	  (concat "#ifndef " ident "\n"
-			  "#define " ident  " \n\n\n"
-
-			  
-			  "#include <stdio.h> \n"
-			  "#include <cstdlib> \n"
-			  "#include <iomanip> \n"
-			  "#include <fstream> \n"
-			  "#include <iostream> \n"
-			  "#include <ilcplex/ilocplex.h> \n\n"
-			  "using namespace std; \n"
-			  
-			  
-			  "\n\n#endif // " ident "\n"))
-	))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

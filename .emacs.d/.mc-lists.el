@@ -25,5 +25,6 @@
 (setq mc/cmds-to-run-once
       '(
 		beginning-of-buffer
+		helm-M-x
 		xterm-paste
 		))
