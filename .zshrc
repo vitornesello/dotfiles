@@ -2,6 +2,11 @@ HISTSIZE=10000
 SAVEHIST=10000
 HISTFILE=~/.zsh_history
 
+setopt HIST_IGNORE_SPACE
+HISTORY_IGNORE="*deploy-main-cluster*"
+HISTIGNORE="*deploy-main-cluster*"
+
+
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
 
@@ -12,9 +17,6 @@ else
   export EDITOR='emacs'
 fi
 
-alias cplex128='/Users/vitornesello/Applications/ILOG/CPLEX_Studio128/cplex/bin/x86-64_osx/cplex'
-export PATH="/Users/vitornesello/Applications/ILOG/CPLEX_Studio128/cplex/bin/x86-64_osx/cplex":$PATH
-export LD_LIBRARY_PATH="/Users/vitornesello/Applications/ILOG/CPLEX_Studio128/cplex/bin/x86-64_osx/":$LD_LIBRARY_PATH
 alias emacs='/usr/local/Cellar/emacs/27.2/bin/emacs-27.2 -nw'
 
 alias editsource='emacs ~/.zshrc'
@@ -36,8 +38,8 @@ export PATH="/usr/local/bin/aws":$PATH
 export JDEV='/Users/vitornesello/.julia/dev'
 alias jdev='cd /Users/vitornesello/.julia/dev'
 
-alias gfe='cd /Users/vitornesello/Applications/gitCode/galia-front-end/'
-alias gbe='cd /Users/vitornesello/Applications/gitCode/galia-back-end/'
+alias gfe='cd /Users/vitornesello/gitCode/galia-front-end/'
+alias gbe='cd /Users/vitornesello/gitCode/galia-back-end/'
 
 # Visual Code alias
 alias code='/Applications/Visual\ Studio\ Code.app/Contents/MacOS/Electron'
@@ -85,6 +87,7 @@ function wait_and_pull_master() {
 }
 
 export PATH="/usr/local/sbin:$PATH"
+export PATH="/Applications/Julia-1.7.app/Contents/Resources/julia/bin/:$PATH"
 
 alias call_oracle='julia ~/.julia/dev/CardsOracle/scripts/call_oracle.jl'
 alias print_champs='julia ~/.julia/dev/CardsOracle/scripts/print_championship.jl'
@@ -100,7 +103,7 @@ fh() {
 
 alias start_minecraft="java -jar server.jar nogui"
 
-. "$HOME/.cargo/env"
+# . "$HOME/.cargo/env"
 
 autoload -U +X bashcompinit && bashcompinit
 # complete -o nospace -C /usr/local/bin/terraform terraform
