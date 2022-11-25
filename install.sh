@@ -18,6 +18,10 @@ brew install npm yarn redis wget docker
 echo "Install ng with npm"
 npm install -g @angular/cli
 
+# Window management
+brew install koekeishiya/formulae/skhd
+brew install koekeishiya/formulae/yabai
+
 # echo "Install cask formulae"
 # brew install --cask alacritty visual-studio-code docker insomnia julia typora dbeaver-community
 
