@@ -1,5 +1,19 @@
 add_newline = false
 
+[custom.prod_k8s_env]
+command = 'echo K8S-PROD' # shows output of command
+detect_files = ['foo'] # can specify filters but wildcards are not supported
+when = ''' test "$K8SENV" = "production" '''
+format = ' [$output]($style)'
+style = 'bold red'
+
+[custom.dev_stg_k8s_env]
+command = 'echo K8S-DEV' # shows output of command
+detect_files = ['foo'] # can specify filters but wildcards are not supported
+when = ''' test "$K8SENV" = "dev-stg" '''
+format = ' [$output]($style)'
+style = 'bold green'
+
 [git_metrics]
 disabled = false
 added_style = "bold green"

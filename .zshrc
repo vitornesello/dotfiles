@@ -95,3 +95,17 @@ source /Users/vitornesello/.zsh/fast-syntax-highlighting/fast-syntax-highlightin
 
 . /usr/local/opt/asdf/libexec/asdf.sh
 
+
+function setdev() {
+    export K8SENV=dev-stg
+    export AWS_PROFILE=vitornesello
+    export KUBECONFIG=/Users/vitornesello/gitCode/infrastructure/development-staging/kubeconfig_development-staging-eks-cluster
+    echo "\033[1;92mUsing K8s dev-stg environment\033[00m"
+}
+
+function setprod() {
+    export K8SENV=production
+    export AWS_PROFILE=vitornesello
+    export KUBECONFIG=/Users/vitornesello/gitCode/infrastructure/production/kubeconfig_production-eks-cluster
+    echo "\033[1;91mUsing K8s production environment\033[00m"
+}
