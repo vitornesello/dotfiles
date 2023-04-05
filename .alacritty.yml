@@ -499,6 +499,38 @@ schemes:
       cyan: '#54ced6'
       white: '#282a2e'
 
+  ### GruvboxLight ###
+  GruvboxLight:
+    # Default colors
+    &GruvboxLight
+    primary:
+      # hard contrast: background = '#f9f5d7'
+      background: '#fbf1c7'
+      # soft contrast: background = '#f2e5bc'
+      foreground: '#3c3836'
+
+    # Normal colors
+    normal:
+      black: '#fbf1c7'
+      red: '#cc241d'
+      green: '#98971a'
+      yellow: '#d79921'
+      blue: '#458588'
+      magenta: '#b16286'
+      cyan: '#689d6a'
+      white: '#7c6f64'
+
+    # Bright colors
+    bright:
+      black: '#928374'
+      red: '#9d0006'
+      green: '#79740e'
+      yellow: '#b57614'
+      blue: '#076678'
+      magenta: '#8f3f71'
+      cyan: '#427b58'
+      white: '#3c3836'
+
 ######################################################################
 ## SET THEME: Choose ONE color scheme from those in the above list. ##
 ## ###################################################################
@@ -506,6 +538,7 @@ schemes:
 # *DoomOne
 # *Dracula
 # *GruvboxDark
+# *GruvboxLight
 # *MonokaiPro
 # *Nord
 # *OceanicNext
@@ -513,8 +546,8 @@ schemes:
 # *SolarizedLight
 # *SolarizedDark
 # *TomorrowNight
-
-colors: *DoomOne
+# colors: *DoomOne # bobba
+colors: *GruvboxLight
 
 #   # Indexed Colors
 #   #
@@ -811,7 +844,7 @@ cursor:
   # If this is `true`, the cursor will be rendered as a hollow box when the
   # window is not focused.
   unfocused_hollow: true
-theme: github_light_default
+theme: 3024.dark
 
 # # dynamic_title: false
 # # Live config reload (changes require restart)

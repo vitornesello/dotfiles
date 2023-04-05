@@ -1,4 +1,3 @@
-
 HISTSIZE=10000
 SAVEHIST=10000
 HISTFILE=~/.zsh_history
@@ -19,18 +18,28 @@ else
 fi
 
 # Important PATH
+export PATH="/opt/homebrew/bin:$PATH" # This must come first in order to use ARM isntallation
 export PATH="/usr/local/sbin:$PATH"
 export PATH="/Applications/Julia-1.8.app/Contents/Resources/julia/bin/:$PATH"
 # I think we can delete node12
 export PATH="/usr/local/opt/node@12/bin:$PATH"
+
+# Go binaries
+export PATH="/Users/vitornesello/go/bin:$PATH"
 
 # Gurobi
 export GUROBI_HOME="/Library/gurobi910/mac64/"
 export PATH="${PATH}:${GUROBI_HOME}/bin"
 export LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:${GUROBI_HOME}/lib"
 
+# HiGHS
+export PATH="${PATH}:~/gitcode/HiGHS/bin/"
+
 # AWS
 export PATH="/usr/local/bin/aws":$PATH
+
+# Doom Emacs
+PATH="$HOME/.doom/emacs/bin:$PATH"
 
 # Visual Code alias
 alias code='/Applications/Visual\ Studio\ Code.app/Contents/MacOS/Electron'
@@ -40,8 +49,8 @@ export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 eval "$(starship init zsh)"
 
-# Important aliases
-alias emacs='/usr/local/Cellar/emacs/28.2/bin/emacs-28.2 -nw'
+# # Important aliases
+# alias emacs='/usr/local/Cellar/emacs/28.2/bin/emacs-28.2 -nw'
 
 alias editsource='emacs ~/.zshrc'
 alias updatesource='source ~/.zshrc'
@@ -108,4 +117,32 @@ function setprod() {
     export AWS_PROFILE=vitornesello
     export KUBECONFIG=/Users/vitornesello/gitCode/infrastructure/production/kubeconfig_production-eks-cluster
     echo "\033[1;91mUsing K8s production environment\033[00m"
+}
+
+function setclear() {
+    sed -i 's/colors: *GruvboxLight/colors: *DoomOne/g' ~/.alacritty.yml
+}
+
+function setdark() {
+    sed -i 's/colors: *DoomOne/colors: *GruvboxLight/g' ~/.alacritty.yml
+}
+
+alias lasttag="git describe --tags --abbrev=0"
+
+function ftoken() {
+    security find-generic-password -w -s 'vitorkeys'  -a $1
+}
+
+
+function register_package() {
+    PKNAME=$1
+    echo "Registering package $PKNAME"
+    cd ~/.julia/registries/Benders
+    git pull
+    julia -e "import Pkg; Pkg.activate(\"../../environments/registrator\"); Pkg.develop(\"$PKNAME\"); using LocalRegistry; register(\"$PKNAME\", registry=\".\", repo=\"git@github.com:atoptima/$PKNAME.git\"); Pkg.rm(\"$PKNAME\");"
+    echo "Registered package $PKNAME"
+}
+
+function ytdl() {
+    youtube-dl --extract-audio --audio-format mp3 $1
 }
