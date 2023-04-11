@@ -146,3 +146,11 @@ function register_package() {
 function ytdl() {
     youtube-dl --extract-audio --audio-format mp3 $1
 }
+
+function decrypt() {
+    openssl enc -d -aes-256-cbc -in $1 -out $1.txt
+}
+
+function encrypt() {
+    openssl enc -aes-256-cbc -salt -in $1 -out $1.enc
+}
