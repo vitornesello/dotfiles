@@ -154,3 +154,15 @@ function decrypt() {
 function encrypt() {
     openssl enc -aes-256-cbc -salt -in $1 -out $1.enc
 }
+
+# GBE utilities
+PATH="$HOME/gitcode/gbe-cli/target/release/:$PATH"
+export GBE_USR=vitornesello@atoptima.com
+export GBE_PWD=$(ftoken gbe-pwd)
+export GBE_URL=https://gbe.atoptima.com
+
+function job-report() {
+    gbe-cli job-report -l 10 | dasel -r json -w csv | column -t -s,
+}
+
+
