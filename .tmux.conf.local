@@ -308,3 +308,7 @@ bind C-q send-prefix
 
 # move status line to top
 set -g status-position top
+
+# toggle status bar
+bind-key 0 set status off
+bind-key 9 set status on
