@@ -63,7 +63,10 @@ font:
   # Style can be specified to pick a specific face.
   normal:
     # family: Iosevka
-    family: "Fira Code"
+    # family: Hack Nerd Font Mono
+    # family: "FiraCode Nerd Font"
+    family: "FiraCode Nerd Font"
+    # family: "Cousine Nerd Font Mono"
     # family: "Source Code Pro"
     # style: Retina
 
@@ -546,8 +549,7 @@ schemes:
 # *SolarizedLight
 # *SolarizedDark
 # *TomorrowNight
-# colors: *DoomOne # bobba
-colors: *GruvboxLight
+colors: *DoomOne
 
 #   # Indexed Colors
 #   #
@@ -875,3 +877,4 @@ theme: 3024.dark
 #   # Record all characters and escape sequences as test data.
 #   ref_test: false
 # # vim: nospell
+
