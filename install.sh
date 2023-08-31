@@ -10,7 +10,7 @@ echo "Install dev tools"
 # brew doctor
 
 echo "Install text formulae : terminal utils"
-brew install coreutils zsh emacs fzf tmux starship tree bat tig htop rsync postgresql antigen thefuck watch kubectl graphviz terraform helm jq git-delta
+brew install coreutils zsh fzf tmux starship tree bat tig htop nvim rsync postgresql antigen watch kubectl graphviz terraform helm jq git-delta ripgrep
 
 echo "Install text formulae : web-dev"
 brew install npm yarn redis wget docker
