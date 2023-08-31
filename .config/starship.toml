@@ -4,14 +4,14 @@ add_newline = false
 command = 'echo K8S-PROD' # shows output of command
 detect_files = ['foo'] # can specify filters but wildcards are not supported
 when = ''' test "$K8SENV" = "production" '''
-format = ' [$output]($style)'
+format = ' [$output ]($style)'
 style = 'bold red'
 
 [custom.dev_stg_k8s_env]
 command = 'echo K8S-DEV' # shows output of command
 detect_files = ['foo'] # can specify filters but wildcards are not supported
 when = ''' test "$K8SENV" = "dev-stg" '''
-format = ' [$output]($style)'
+format = ' [$output ]($style)'
 style = 'bold green'
 
 [git_metrics]
@@ -25,9 +25,14 @@ format = '[+$added]($added_style)/[-$deleted]($deleted_style) '
 # charging_symbol = "+ "
 # discharging_symbol = "* "
 
-# [[battery.display]]  # "bold red" style when capacity is between 0% and 10%
-# threshold = 10
-# style = "bold red"
+[battery]
+full_symbol = ''
+charging_symbol = ''
+discharging_symbol = '!'
+
+[[battery.display]]  # "bold red" style when capacity is between 0% and 10%
+threshold = 10
+style = "bold red"
 
 # [[battery.display]]  # "bold yellow" style when capacity is between 10% and 30%
 # threshold = 30
