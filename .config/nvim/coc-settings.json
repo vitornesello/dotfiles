@@ -1,0 +1,6 @@
+{
+  "colors.enable": true,
+  "julia.environmentPath": "~/.julia/environments/juliavim",
+  "julia.executablePath": "/Applications/Julia-1.8.app/Contents/Resources/julia/bin/julia"
+}
+
