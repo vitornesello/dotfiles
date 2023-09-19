@@ -145,6 +145,9 @@ nmap <leader>ac  <Plug>(coc-codeaction-cursor)
 " Prefer excluding trailling whispace when going to the end of line
 vnoremap $ $h
 
+" Visual multi
+let g:VM_leader = '<SPACE><SPACE>'
+
 " Mimic Emacs Editing in Insert Mode Only
 " Move to beginning of line
 inoremap <C-A> <Home>
