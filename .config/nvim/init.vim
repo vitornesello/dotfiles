@@ -234,6 +234,10 @@ let g:interestingWordsGUIColors = ['#8CCBEA', '#A4E57E', '#FFDB72', '#FF7272', '
 " ÷ is <M-/> in my machine
 noremap ÷ :Commentary<CR>
 inoremap ÷ <Esc>:Commentary<CR>a
+noremap <leader>c :Commentary<CR>
+
+" Search and replace word under cursor
+nnoremap <Leader>s :%s/\<<C-r><C-w>\>/
 
 " Rust-specific
 let g:rustfmt_autosave = 1
