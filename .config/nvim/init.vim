@@ -130,10 +130,12 @@ xmap <leader>f  <Plug>(coc-format-selected)
 nmap <leader>f  <Plug>(coc-format-selected)
 
 " Identifier-based code navigation
-nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gdd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
+nmap <silent> gds :call CocAction('jumpDefinition', 'split')<CR>
+nmap <silent> gdv :call CocAction('jumpDefinition', 'vsplit')<CR>
 
 " Remap keys for applying code actions at the cursor position
 nmap <leader>ac  <Plug>(coc-codeaction-cursor)
