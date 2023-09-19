@@ -190,7 +190,7 @@ inoremap <silent><expr> <C-n>
       \ CheckBackspace() ? "\<Down>" :
       \ coc#refresh()
 inoremap <silent><expr> <C-p>
-      \ coc#pum#visible() ? coc#pum#next(1) :
+      \ coc#pum#visible() ? coc#pum#prev(1) :
       \ CheckBackspace() ? "\<Up>" :
       \ coc#refresh()
 
