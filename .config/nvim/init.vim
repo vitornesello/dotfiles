@@ -13,6 +13,8 @@ set nowrap             " Disable line wrapping
 set splitbelow         " When splitting horizontaly, open new window below the current one
 set splitright         " When splitting vertically, open new window right of the current one
 set expandtab          " Prefer spaces over tabs
+set tabstop=4          " Set tab size to 4 spaces
+set shiftwidth=4       " Set indentation size to 4 spaces
 set whichwrap+=<,>,[,] " Go to next line when moving cursor with the arrows
 
 " Always show the signcolumn to void shifting the text each time diagnostics
