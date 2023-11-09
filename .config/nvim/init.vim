@@ -5,8 +5,8 @@ set linespace=1        " Set line-spacing to minimum.
 set showmode           " Show current mode.
 set ignorecase         " Search case insensitive...
 set smartcase          " ... but not when search pattern contains upper case characters
-set smartindent        " ?
-set autoindent         " ?
+" set smartindent        " ?
+" set autoindent         " ?
 set list               " Show listchars as defined in variable listchars
 set guicursor=i:block  " Set cursor to block in insert mode
 set nowrap             " Disable line wrapping
@@ -40,11 +40,14 @@ Plug 'nvim-tree/nvim-tree.lua'
 
 " Completion framework
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'JuliaEditorSupport/julia-vim'
 
 " color schemes
 Plug 'joshdick/onedark.vim'
 Plug 'romgrk/doom-one.vim'
 Plug 'projekt0n/github-nvim-theme'
+Plug 'dracula/vim', { 'as': 'dracula' }
+Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
 
 " FZF
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
@@ -59,15 +62,24 @@ Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 " Highlight words under cursor
 Plug 'lfv89/vim-interestingwords'
 
+" Highlight changed lines
+Plug 'lewis6991/gitsigns.nvim'
+
+Plug 'nvim-lualine/lualine.nvim'
+Plug 'ggandor/lightspeed.nvim'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'} " ?
+
 call plug#end()
 
 syntax on
 filetype plugin on
 filetype plugin indent on
-colorscheme onedark
 
 lua require('nvim_tree')
-lua require('status_line')
+lua require('catppuccin_config')
+lua require('gitsigns_config')
+lua require('evil_lualine')
+lua require('treesitter_config')
 
 imap <silent><script><expr> <C-J> copilot#Accept("")
 let g:copilot_no_tab_map = v:true
@@ -241,4 +253,9 @@ nnoremap <Leader>s :%s/\<<C-r><C-w>\>/
 
 " Rust-specific
 let g:rustfmt_autosave = 1
+nnoremap <Leader>rr :RustRun<CR>
+nnoremap <Leader>rt :RustTest<CR>
 
+colorscheme catppuccin
+
+set statusline+=%{get(b:,'gitsigns_status','')}
