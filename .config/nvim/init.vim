@@ -256,6 +256,10 @@ let g:rustfmt_autosave = 1
 nnoremap <Leader>rr :RustRun<CR>
 nnoremap <Leader>rt :RustTest<CR>
 
+" Typescript-specific
+autocmd BufNewFile,BufRead *.ts setlocal tabstop=2
+autocmd BufNewFile,BufRead *.ts setlocal shiftwidth=2
+
 colorscheme catppuccin
 
 set statusline+=%{get(b:,'gitsigns_status','')}
