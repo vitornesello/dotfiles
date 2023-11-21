@@ -5,8 +5,7 @@ set linespace=1        " Set line-spacing to minimum.
 set showmode           " Show current mode.
 set ignorecase         " Search case insensitive...
 set smartcase          " ... but not when search pattern contains upper case characters
-" set smartindent        " ?
-" set autoindent         " ?
+set cursorline         " Highlight current line
 set list               " Show listchars as defined in variable listchars
 set guicursor=i:block  " Set cursor to block in insert mode
 set nowrap             " Disable line wrapping
@@ -226,7 +225,10 @@ nnoremap <M-E> :NvimTreeToggle<CR>
 " FZF
 " Search for files
 nnoremap <C-P> :Files<CR>
+" Fuzzy-Search in project
+nnoremap <leader>f :Rg<CR>
 " Search for pattern in project
+nnoremap <leader>F :RG<CR>
 nnoremap <M-F> :RG<CR>
 " Open list of open buffers
 nnoremap <M-b> :Buffers<CR>
