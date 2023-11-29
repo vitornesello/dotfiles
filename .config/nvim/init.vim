@@ -137,8 +137,7 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 nmap <leader>rn <Plug>(coc-rename)
 
 " Formatting selected code
-xmap <leader>f  <Plug>(coc-format-selected)
-nmap <leader>f  <Plug>(coc-format-selected)
+vnoremap <leader>f  <Plug>(coc-format-selected)
 
 " Identifier-based code navigation
 nmap <silent> gdd <Plug>(coc-definition)
