@@ -34,7 +34,10 @@ export PATH="${PATH}:${GUROBI_HOME}/bin"
 export LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:${GUROBI_HOME}/lib"
 
 # HiGHS
-export PATH="${PATH}:~/gitcode/HiGHS/bin/"
+export PATH="${PATH}:~/code/HiGHS/build/bin"
+# export PATH="${PATH}:~/code/HiGHS/build/lib"
+# export LDFLAGS="-L/usr/local/homebrew/opt/libomp/lib"
+# export CPPFLAGS="-I/usr/local/homebrew/opt/libomp/include"
 
 # AWS
 export PATH="/usr/local/bin/aws":$PATH
@@ -56,14 +59,20 @@ alias editsource='nvim ~/.zshrc'
 alias updatesource='source ~/.zshrc'
 
 alias jdev='cd /Users/vitornesello/.julia/dev'
-alias gfe='cd /Users/vitornesello/gitcode/galia-front-end/'
-alias gbe='cd /Users/vitornesello/gitcode/galia-back-end/'
-alias gitcode='cd /Users/vitornesello/gitcode'
+alias gfe='cd /Users/vitornesello/code/galia-front-end/'
+alias gbe='cd /Users/vitornesello/code/galia-back-end/'
+alias ccode='cd /Users/vitornesello/code'
+alias k='kubectl'
 
 # Gadgets
 alias mypip="wget -qO- http://ipecho.net/plain | xargs echo"
 alias todos="nvim ~/Desktop/todos.md"
 alias compresspdf="ps2pdf -dPDFSETTINGS=/ebook original.pdf compressed.pdf"
+
+# Find apps listening on ports
+function listening() {
+    lsof -iTCP -sTCP:LISTEN -P
+}
 
 # Shortcuts to get information about the system
 alias cputemp='sudo powermetrics|grep -i "CPU die temperature"'
@@ -97,15 +106,15 @@ function setstg() {
     export GBE_URL=https://gbe.staging.atoptima.com
     export K8SENV=dev-stg
     export AWS_PROFILE=vitornesello
-    export KUBECONFIG=~/gitcode/infrastructure/development-staging/kubeconfig_development-staging-eks-cluster
+    export KUBECONFIG=~/code/infrastructure/development-staging/kubeconfig_development-staging-eks-cluster
     echo "\033[1;92mUsing K8s dev-stg environment\033[00m"
 }
 
 function setdev() {
     export GBE_URL=https://gbe.development.atoptima.com
     export K8SENV=dev-stg
-    export AWS_PROFILE=vitornesello
-    export KUBECONFIG=~/gitcode/infrastructure/development-staging/kubeconfig_development-staging-eks-cluster
+    export AWS_PROFILE= vitornesello
+    export KUBECONFIG=~/code/infrastructure/development-staging/kubeconfig_development-staging-eks-cluster
     echo "\033[1;92mUsing K8s dev-stg environment\033[00m"
 }
 
@@ -113,7 +122,7 @@ function setprod() {
     export GBE_URL=https://gbe.atoptima.com
     export K8SENV=production
     export AWS_PROFILE=vitornesello
-    export KUBECONFIG=~/gitcode/infrastructure/production/kubeconfig_production-eks-cluster
+    export KUBECONFIG=~/code/infrastructure/production/kubeconfig_production-eks-cluster
     echo "\033[1;91mUsing K8s production environment\033[00m"
 }
 
@@ -141,6 +150,8 @@ function register_package() {
     echo "Registered package $PKNAME"
 }
 
+alias jit="git"
+
 function ytdl() {
     youtube-dl --extract-audio --audio-format mp3 $1
 }
@@ -154,7 +165,10 @@ function encrypt() {
 }
 
 # GBE utilities
-PATH="$HOME/gitcode/gbe-cli/target/release/:$PATH"
+PATH="$HOME/code/gbe-cli/target/release/:$PATH"
+# export GBE_USR=vitor.karusec.admin@atoptima.com
+# export GBE_PWD=
+# export GBE_URL=https://gbe.atoptima.com
 export GBE_USR=vitornesello@atoptima.com
 export GBE_PWD=$(ftoken gbe-pwd)
 export GBE_URL=https://gbe.atoptima.com
@@ -167,21 +181,21 @@ function job-report() {
 
 function setdark() {
     osascript -e 'tell app "System Events" to tell appearance preferences to set dark mode to true'
-    export DARK_MODE=1
-    sed -i'' -e 's/colors: \*GruvboxLight/colors: \*DoomOne/g' ~/.alacritty.yml
+    # export DARK_MODE=1
+    # sed -i'' -e 's/  - ~\/.config\/alacritty\/themes.*/  - ~\/.config\/alacritty\/themes\/catppuccin\/catppuccin-mocha.yml/g' ~/.config/alacritty/alacritty.yml
 }
 
 function setlight() {
     osascript -e 'tell app "System Events" to tell appearance preferences to set dark mode to not dark mode'
-    unset DARK_MODE
-    sed -i'' -e 's/colors: \*DoomOne/colors: \*GruvboxLight/g' ~/.alacritty.yml
+    # unset DARK_MODE
+    # sed -i'' -e 's/  - ~\/.config\/alacritty\/themes.*/  - ~\/.config\/alacritty\/themes\/catppuccin\/catppuccin-latte.yml/g' ~/.config/alacritty/alacritty.yml
 }
 
 function pkgcov() {
     julia -e "using LocalCoverage, Pkg; Pkg.develop(\"$1\"); html_coverage(generate_coverage(\"$1\"; run_test = true); open = true, dir = tempdir())"
 }
 
-export HOMEBREW_BREWFILE=~/gitcode/dotfiles/Brewfile
+export HOMEBREW_BREWFILE=~/code/dotfiles/Brewfile
 
 function ug-report() {
     gbe-cli report user-group | dasel -r json -w csv | column -t -s, | awk '{print($1, $8, $14, $15)}' | column -t
