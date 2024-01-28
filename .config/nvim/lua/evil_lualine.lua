@@ -50,6 +50,8 @@ local config = {
   sections = {
     -- these are to remove the defaults
     lualine_a = {},
+    -- lualine_a = { 'g:coc_status', 'bo:filetype' },
+
     lualine_b = {},
     lualine_y = {},
     lualine_z = {},
@@ -78,13 +80,13 @@ local function ins_right(component)
   table.insert(config.sections.lualine_x, component)
 end
 
-ins_left {
-  function()
-    return '▊'
-  end,
-  color = { fg = colors.orange }, -- Sets highlighting of component
-  padding = { left = 0, right = 1 }, -- We don't need space before this
-}
+-- ins_left {
+--   function()
+--     return '▊'
+--   end,
+--   color = { fg = colors.orange }, -- Sets highlighting of component
+--   padding = { left = 0, right = 1 }, -- We don't need space before this
+-- }
 
 ins_left {
   -- filesize component
@@ -104,7 +106,7 @@ ins_left { 'progress', color = { fg = colors.fg, gui = 'bold' } }
 
 ins_left {
   'diagnostics',
-  sources = { 'nvim_diagnostic' },
+  sources = { 'nvim_diagnostic', 'coc' },
   symbols = { error = ' ', warn = ' ', info = ' ' },
   diagnostics_color = {
     color_error = { fg = colors.red },
@@ -175,6 +177,11 @@ ins_left {
 --   color = { fg = '#ffffff', gui = 'bold' },
 -- }
 
+ins_right {
+  -- filesize component
+  'g:coc_status',
+}
+
 -- Add components to right sections
 ins_right {
   'o:encoding', -- option component same as &encoding in viml
@@ -208,13 +215,13 @@ ins_right {
   cond = conditions.hide_in_width,
 }
 
-ins_right {
-  function()
-    return '▊'
-  end,
-  color = { fg = colors.orange },
-  padding = { left = 1 },
-}
+-- ins_right {
+--   function()
+--     return '▊'
+--   end,
+--   color = { fg = colors.orange },
+--   padding = { left = 1 },
+-- }
 
 -- Now don't forget to initialize lualine
 lualine.setup(config)

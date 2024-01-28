@@ -5,7 +5,7 @@ set linespace=1        " Set line-spacing to minimum.
 set showmode           " Show current mode.
 set ignorecase         " Search case insensitive...
 set smartcase          " ... but not when search pattern contains upper case characters
-set cursorline         " Highlight current line
+" set cursorline         " Highlight current line
 set list               " Show listchars as defined in variable listchars
 set guicursor=i:block  " Set cursor to block in insert mode
 set nowrap             " Disable line wrapping
@@ -15,6 +15,7 @@ set expandtab          " Prefer spaces over tabs
 set tabstop=4          " Set tab size to 4 spaces
 set shiftwidth=4       " Set indentation size to 4 spaces
 set whichwrap+=<,>,[,] " Go to next line when moving cursor with the arrows
+set background=dark    " Set background to dark
 
 " Always show the signcolumn to void shifting the text each time diagnostics
 " appear/become resolved (Coc) and allows git-gutter to show changed lines
@@ -67,6 +68,8 @@ Plug 'lewis6991/gitsigns.nvim'
 Plug 'nvim-lualine/lualine.nvim'
 Plug 'ggandor/lightspeed.nvim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'} " ?
+
+" Plug 'christoomey/vim-tmux-navigator'
 
 call plug#end()
 
