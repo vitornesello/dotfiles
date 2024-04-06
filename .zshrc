@@ -21,7 +21,7 @@ export JAVA_HOME="/usr/local/homebrew/Cellar/openjdk/20.0.1"
 
 # Important PATH
 export PATH="/usr/local/sbin:$PATH"
-export PATH="/Applications/Julia-1.8.app/Contents/Resources/julia/bin/:$PATH"
+export PATH="/Applications/Julia-1.10.app/Contents/Resources/julia/bin/:$PATH"
 alias julia19="/Applications/Julia-1.9.app/Contents/Resources/julia/bin/julia"
 alias julia110="/Applications/Julia-1.10.app/Contents/Resources/julia/bin/julia"
 
@@ -38,6 +38,10 @@ export PATH="${PATH}:~/code/HiGHS/build/bin"
 # export PATH="${PATH}:~/code/HiGHS/build/lib"
 # export LDFLAGS="-L/usr/local/homebrew/opt/libomp/lib"
 # export CPPFLAGS="-I/usr/local/homebrew/opt/libomp/include"
+
+# Rust
+# Use git cli fetch dependencies
+export CARGO_NET_GIT_FETCH_WITH_CLI=true
 
 # AWS
 export PATH="/usr/local/bin/aws":$PATH
@@ -63,6 +67,9 @@ alias gfe='cd /Users/vitornesello/code/galia-front-end/'
 alias gbe='cd /Users/vitornesello/code/galia-back-end/'
 alias ccode='cd /Users/vitornesello/code'
 alias k='kubectl'
+
+# Zoxide
+eval "$(zoxide init zsh)"
 
 # Gadgets
 alias mypip="wget -qO- http://ipecho.net/plain | xargs echo"
@@ -127,6 +134,7 @@ function setprod() {
 }
 
 alias lasttag="git describe --tags --abbrev=0"
+alias plt="git describe --tags --abbrev=0 | git push origin"
 
 function ftoken() {
     security find-generic-password -w -s 'vitorkeys'  -a $1
