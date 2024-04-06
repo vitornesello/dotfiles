@@ -1,4 +1,14 @@
 {
+  "coc.preferences.bracketEnterImprove": true,
+  "suggest.noselect": false,
+  "coc.preferences.hoverTarget":"float",
+  "coc.preferences.colorSupport": true,
+  "rust-analyzer.cargo.features": "all",
+  "rust-analyzer.diagnostics.enable": true,
+  "rust-analyzer.inlayHints.bindingModeHints.enable": true,
+  "rust-analyzer.inlayHints.chainingHints": true,
+  "rust-analyzer.inlayHints.typeHints": true,
+  "rust-analyzer.inlayHints.parameterHints": true,
   "languageserver": {
     "julia": {
       "command": "/Applications/Julia-1.9.app/Contents/Resources/julia/bin/julia",

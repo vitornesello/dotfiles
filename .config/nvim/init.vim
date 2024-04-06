@@ -7,7 +7,7 @@ set ignorecase         " Search case insensitive...
 set smartcase          " ... but not when search pattern contains upper case characters
 " set cursorline         " Highlight current line
 set list               " Show listchars as defined in variable listchars
-set guicursor=i:block  " Set cursor to block in insert mode
+" set guicursor=i:block  " Set cursor to block in insert mode
 set nowrap             " Disable line wrapping
 set splitbelow         " When splitting horizontaly, open new window below the current one
 set splitright         " When splitting vertically, open new window right of the current one
@@ -29,68 +29,44 @@ set updatetime=300
 nnoremap <SPACE> <Nop>
 let mapleader = " "
 
-call plug#begin()
-
-" Rust development environment
-Plug 'rust-lang/rust.vim'
-
-" File explorer
-Plug 'nvim-tree/nvim-web-devicons'
-Plug 'nvim-tree/nvim-tree.lua'
-
-" Completion framework
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'JuliaEditorSupport/julia-vim'
-
-" color schemes
-Plug 'joshdick/onedark.vim'
-Plug 'romgrk/doom-one.vim'
-Plug 'projekt0n/github-nvim-theme'
-Plug 'dracula/vim', { 'as': 'dracula' }
-Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
-
-" FZF
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
-
-" Copilot
-Plug 'github/copilot.vim'
-
-" Multi-cursor
-Plug 'mg979/vim-visual-multi', {'branch': 'master'}
-
-" Highlight words under cursor
-Plug 'lfv89/vim-interestingwords'
-
-" Highlight changed lines
-Plug 'lewis6991/gitsigns.nvim'
-
-Plug 'nvim-lualine/lualine.nvim'
-Plug 'ggandor/lightspeed.nvim'
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'} " ?
-
-" Plug 'christoomey/vim-tmux-navigator'
-
-call plug#end()
+" Commentary
+" ÷ is <M-/> in my machine
+noremap ÷ :Commentary<CR>
+inoremap ÷ <Esc>:Commentary<CR>a
+noremap <leader>c :Commentary<CR>
 
 syntax on
 filetype plugin on
 filetype plugin indent on
 
+" Highlight words
+" let g:interestingWordsGUIColors = ['#8CCBEA', '#A4E57E', '#FFDB72', '#FF7272', '#FFB3FF', '#9999FF']
+let g:interestingWordsGUIColors = [ '#EF476F', '#FFD166', '#06D6A0', '#118AB2', '#9999FF', '#EADFB4']
+
+lua require('lazy_config')
 lua require('nvim_tree')
 lua require('catppuccin_config')
 lua require('gitsigns_config')
 lua require('evil_lualine')
-lua require('treesitter_config')
 
 imap <silent><script><expr> <C-J> copilot#Accept("")
 let g:copilot_no_tab_map = v:true
-
 
 " Highlight column
 :au BufWinEnter *.rs set colorcolumn=80,100
 :au BufWinEnter *.jl set colorcolumn=80,92
 :au BufWinEnter *.md set colorcolumn=80,92
+
+" tmux-navigator
+let g:tmux_navigator_no_mappings = 1
+noremap <silent> <M-h> :<C-U>TmuxNavigateLeft<cr>
+noremap <silent> <M-j> :<C-U>TmuxNavigateDown<cr>
+noremap <silent> <M-k> :<C-U>TmuxNavigateUp<cr>
+noremap <silent> <M-l> :<C-U>TmuxNavigateRight<cr>
+
+" Close buffer without closing window
+:command! BW :bn|:bd#
+nnoremap <silent> <leader>w :BW<CR>
 
 """""""""""""""""""""""" CoC begin
 " Use tab for trigger completion with characters ahead and navigate
@@ -104,6 +80,11 @@ inoremap <silent><expr> <TAB>
       \ coc#refresh()
 inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
 
+" Search workspace symbols
+nnoremap <silent><nowait> gs :<C-u>CocList -I symbols<cr>
+
+" Show all diagnostics
+nnoremap <silent><nowait> <space>di  :<C-u>CocList diagnostics<cr>
 
 " Make <CR> to accept selected completion item or notify coc.nvim to format
 " <C-g>u breaks current undo, please make your own choice
@@ -158,9 +139,6 @@ nmap <leader>ac  <Plug>(coc-codeaction-cursor)
 " Prefer excluding trailling whispace when going to the end of line
 vnoremap $ $h
 
-" Visual multi
-let g:VM_leader = '<SPACE><SPACE>'
-
 " Mimic Emacs Editing in Insert Mode Only
 " Move to beginning of line
 inoremap <C-A> <Home>
@@ -170,8 +148,6 @@ inoremap <C-B> <Left>
 inoremap <C-E> <End>
 " Move cursor right
 inoremap <C-F> <Right>
-" Move cursor up: defined in the Coc section
-" Move cursor down: defined in the Coc section
 " Mova backwards a word
 inoremap <M-b> <Esc>bha
 " Move forwards a word
@@ -213,8 +189,6 @@ nnoremap <M-d> viwxi
 
 " =========================== File management & FZF begin ===========================
 " Switch between tabs
-" nnoremap <f-]> :vertical wincmd f<CR>
-" nnoremap <f--> wincmd f<CR>
 nnoremap <M-Tab> :bNext<CR>
 noremap <M-1> :tabn 1<CR>
 noremap <M-2> :tabn 2<CR>
@@ -242,15 +216,6 @@ let g:fzf_preview_window = ['hidden,right,50%', 'ctrl-_']
 command! -bang -nargs=? -complete=dir Files
     \ call fzf#vim#files(<q-args>, {'options': ['--tiebreak=end', '--info=inline']}, <bang>0)
 " =========================== File management & FZF end ===========================
-
-" Highlight words
-let g:interestingWordsGUIColors = ['#8CCBEA', '#A4E57E', '#FFDB72', '#FF7272', '#FFB3FF', '#9999FF']
-
-" Commentary
-" ÷ is <M-/> in my machine
-noremap ÷ :Commentary<CR>
-inoremap ÷ <Esc>:Commentary<CR>a
-noremap <leader>c :Commentary<CR>
 
 " Search and replace word under cursor
 nnoremap <Leader>s :%s/\<<C-r><C-w>\>/

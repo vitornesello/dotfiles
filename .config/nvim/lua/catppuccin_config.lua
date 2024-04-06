@@ -1,5 +1,5 @@
 require('catppuccin').setup({
-    flavour = "frappe",
+    flavour = "macchiato",
     color_overrides = {
         mocha = {
             rosewater = "#efc9c2",
